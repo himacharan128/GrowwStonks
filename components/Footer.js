@@ -2,7 +2,9 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div className=' flex flex-between w-full  pt-3'>
+      Footer
+      </div>
   )
 }
 

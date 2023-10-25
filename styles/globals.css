@@ -168,3 +168,24 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+/* Dark Mode Styles */
+body {
+  background-color: #ffffff;
+  color: #333333;
+}
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+.dark-mode h1 {
+  color: #ffcc00;
+}
+.dark-mode a {
+  color: #00ccff;
+}
+.dark-mode button {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #ccc;
+}
