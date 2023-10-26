@@ -4,7 +4,7 @@ import Footer from '@components/Footer'
 
 export const metadata = {
   title: 'GrowwStonks',
-  description: '',
+  description: 'Assignment',
 }
 
 export default function RootLayout({ children }) {
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
           {children}
         </div>
         <Footer/>
-        </body>
+      </body>
     </html>
   )
 }

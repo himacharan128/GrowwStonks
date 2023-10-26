@@ -9,14 +9,14 @@ const NavBar = () => {
       <Link href='/' className='flex items-center gap-5'>
         <div className=' rounded-xl overflow-hidden'>
           <Image src='https://i.ibb.co/bzDY1ZS/logo.png' alt='logo'
-            width={75} height={75}/>
+            width={50} height={50}/>
         </div>
-        <p className='text-lg sm:text-xl hidden sm:block'>GrowwStonks</p>
+        <p className='text-2xl font-bold sm:text-xl hidden sm:block'>GrowwStonks</p>
       </Link>
-      <div className='w-full sm:w-auto sm:flex-grow sm:pl-4'>
+      <div className='px-4 py-1 min-w-[50%]'>
         <SearchBar/>
       </div>
-      <div className='sm:pl-4'>
+      <div>
         <DisplayModeToggle/>
       </div>
     </div>
