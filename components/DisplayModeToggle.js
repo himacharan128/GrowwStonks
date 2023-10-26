@@ -24,7 +24,7 @@ const DisplayModeToggle = () => {
         }`}
         onClick={toggleDarkMode}
       >
-        {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+        {isDarkMode ? 'LightMode' : 'DarkMode'}
       </button>
     </div>
   );
