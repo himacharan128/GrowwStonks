@@ -1,10 +1,24 @@
 "use client";
-import React, { useState } from 'react';
+import Card from '@components/home/Card';
+import React, { useState, useEffect } from 'react';
 
 const Explore = () => {
   const [selectedTab, setSelectedTab] = useState('Top Gainers');
-  const topGainersData = [1,2,3,4];
-  const topLosersData = [5,6,7,8];
+  const [topGainers, setTopGainers] = useState([]);
+  const [topLosers, setTopLosers] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const { topGainers, topLosers } = await getTopGainersLosers();
+        setTopGainers(topGainers);
+        setTopLosers(topLosers);
+      } catch (error) {
+      }
+    }
+
+    fetchData();
+  }, []);
 
   const handleTabChange = (event) => {
     setSelectedTab(event.target.value);
@@ -37,12 +51,13 @@ const Explore = () => {
 
       <div className="card-grid">
         {selectedTab === 'Top Gainers' &&
-          topGainersData.map((item, index) => (
-            <h1>CARD DATA</h1>
+          topGainers.map((gainer, index) => (
+            <Card key={index} data={gainer} />
           ))}
+
         {selectedTab === 'Top Losers' &&
-          topLosersData.map((item, index) => (
-            <h1>CARD DATA</h1>
+          topLosers.map((loser, index) => (
+            <Card key={index} data={loser} />
           ))}
       </div>
     </div>
