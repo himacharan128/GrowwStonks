@@ -4,7 +4,7 @@ import Footer from '@components/home/Footer'
 import ThemeProvider from '@components/providers/ThemeProvider'
 export const metadata = {
   title: 'GrowwStonks',
-  description: 'Assignment',
+  description: 'Groww Hiring Assignment',
 }
 
 export default function RootLayout({ children }) {
