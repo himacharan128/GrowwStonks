@@ -1,7 +1,7 @@
 import './globals.css'
 import NavBar from '@components/home/NavBar'
 import Footer from '@components/home/Footer'
-import ThemeProvider from '@components/providers/ThemeProvider'
+import ThemeProvider from '@utils/ThemeProvider'
 export const metadata = {
   title: 'GrowwStonks',
   description: 'Groww Hiring Assignment',

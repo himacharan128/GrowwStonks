@@ -1,4 +1,4 @@
-import Explore from "@pages/Explore";
+import Explore from "@components/tabs/Explore";
 
 export default function Home() {
   return (
