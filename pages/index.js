@@ -1,5 +1,3 @@
-import Head from "next/head";
-import Image from "next/image";
 import { useState } from "react";
 import Card from "../components/Card";
 
@@ -50,7 +48,7 @@ export default function Home({ top_gainers, top_losers }) {
 }
 
 export async function getServerSideProps(context) {
-  const apiKey = "6U9NA5NYY4LZ8YAS";
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
   const url = `https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=${apiKey}`;
 
@@ -63,8 +61,8 @@ export async function getServerSideProps(context) {
   }
 
   const data = await response.json();
-  const top_gainers = data?.top_gainers;
-  const top_losers = data?.top_losers;
+  const top_gainers = data?.top_gainers || [];
+  const top_losers = data.top_losers || [];
 
   return {
     props: {

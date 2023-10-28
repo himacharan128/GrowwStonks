@@ -1,7 +1,12 @@
 import React from "react";
+import NavBar from "./NavBar";
 
-function Header() {
-  return <div className="text-sky-500">Header</div>;
+const Header = () => {
+  return (
+    <div>
+      <NavBar />
+    </div>
+  )
 }
 
-export default Header;
+export default Header
