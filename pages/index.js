@@ -1,10 +1,52 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
+import Card from "../components/Card";
 
 export default function Home({ top_gainers, top_losers }) {
-  // Here are your top gainers and top losers
-  console.log(top_gainers);
-  return <div></div>;
+  const [displayStocks, setDisplayStocks] = useState(top_gainers);
+  const [gainersClick, setGainersClick] = useState(true);
+  const handleGainerClick = (e) => {
+    e.preventDefault();
+    setDisplayStocks(top_gainers);
+    setGainersClick(true);
+  };
+
+  const handleLoserClick = (e) => {
+    e.preventDefault();
+    setDisplayStocks(top_losers);
+    setGainersClick(false);
+  };
+  return (
+    <div>
+      <div className="bg-neutral-200 p-3 content-around flex">
+        <button
+          className={`${gainersClick ? " text-sky-500" : "text-black "}`}
+          onClick={handleGainerClick}
+        >
+          Top Gainers
+        </button>
+        <button
+          className={`${!gainersClick ? " text-sky-500" : "text-black "}`}
+          onClick={handleLoserClick}
+        >
+          Top Losers
+        </button>
+      </div>
+
+      <div className="flex">
+        {displayStocks.map((item) => (
+          <Card
+            ticker={item.ticker}
+            price={item.price}
+            volume={item.volume}
+            change_amount={item.change_amount}
+            change_percentage={item.change_percentage}
+          />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export async function getServerSideProps(context) {
@@ -16,7 +58,7 @@ export async function getServerSideProps(context) {
 
   if (!response.ok) {
     return {
-      notFound: true, // Return a 404 error page if the API request fails
+      notFound: true,
     };
   }
 
@@ -31,3 +73,4 @@ export async function getServerSideProps(context) {
     },
   };
 }
+
