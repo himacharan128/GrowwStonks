@@ -9,6 +9,7 @@ function Layout({ children }) {
         <main className="flex-grow">
           {children}
         </main>
+        <div className="pb-2"></div>
       <Footer />
     </div>
   );

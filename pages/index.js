@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
-import temporaryData from "../utils/temporaryData.json";
+import temporaryData from "../utils/tempTopL&GData.json";
 
 export default function Home({ top_gainers, top_losers }) {
   const [displayStocks, setDisplayStocks] = useState(top_gainers);
