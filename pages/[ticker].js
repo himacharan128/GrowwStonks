@@ -60,13 +60,6 @@ function Company({ companyData }) {
 export default Company;
 
 
-
-
-
-
-
-
-
 export async function getServerSideProps(context) {
   const { params } = context;
   const { ticker } = params;
