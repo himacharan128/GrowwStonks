@@ -3,6 +3,7 @@ import Card from "../components/Card";
 import temporaryData from "../utils/tempTopL&GData.json";
 import { fetchAndCacheData } from "./api/cache";
 
+
 export default function Home({ top_gainers, top_losers }) {
   const [displayStocks, setDisplayStocks] = useState(top_gainers);
   const [gainersClick, setGainersClick] = useState(true);
@@ -26,7 +27,6 @@ export default function Home({ top_gainers, top_losers }) {
     setGainersClick(false);
   };
   
-
   return (
     <div>
       <div className="p-3 flex justify-center">
@@ -70,6 +70,11 @@ export default function Home({ top_gainers, top_losers }) {
           ))}
         </div>
       )}
+      <div className="flex justify-center">
+          <div className=" text-black px-4 py-2 bg-gray-400 rounded-full font-bold cursor-pointer hover:scale-105 hover:shadow-md transition transform">
+            Load More
+          </div>
+        </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 import temporaryData from "../utils/tempCompanyOverview.json";
-import chartData from "../utils/chartData.json";
+import chartData from "../utils/tempChartData.json";
 import { Chart } from "react-google-charts";
 
 function Company({ companyData }) {

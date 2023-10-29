@@ -10,7 +10,7 @@ function Card({
   const isPositiveChange = parseFloat(change_amount) > 0;
   const isNegativeChange = parseFloat(change_amount) < 0;
   const hrStyle = {
-    border: "1px solid black", // Set the border color to black
+    border: "1px solid black",
   };
   const triangleStyle = {
     color: isPositiveChange ? "green" : isNegativeChange ? "red" : "black",
