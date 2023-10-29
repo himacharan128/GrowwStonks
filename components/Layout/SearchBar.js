@@ -67,7 +67,7 @@ function SearchBar() {
                   Stocks
                 </h1>
                 <h1 className="bg-neutral-400 text-white font-semibold p-1  rounded-xl">
-                  Efd's
+                  Efts
                 </h1>
               </div>
               <ul className="flex flex-col space-y-2 divide-y-2 p-2">
