@@ -12,7 +12,7 @@ const Footer = () => {
               GrowwStonks  2023 {" "}
             </span>
           </p>
-          <div className="text-xs text-right absolute bottom-0 right-0 m-4 pr-2 pb-2">
+          <div className="text-xs text-right m-4">
             <Link href="http://localhost:3000/api/topGainersLosers">
               <p className=" text-blue-300 text-xs text-right">Click Me if Page is not working Properly!</p>
             </Link>

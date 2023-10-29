@@ -1,23 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../components/Card";
+import temporaryData from "../utils/temporaryData.json";
 
 export default function Home({ top_gainers, top_losers }) {
   const [displayStocks, setDisplayStocks] = useState(top_gainers);
   const [gainersClick, setGainersClick] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
-
+  useEffect(() => {
+    setLoading(false); // Update loading state when data is fetched
+  }, []);
   const handleGainerClick = (e) => {
     e.preventDefault();
+    // console.log("Top Gainers clicked");
     setDisplayStocks(top_gainers);
     setGainersClick(true);
+    // console.log("Top Gainers clicked");
   };
-
+  
   const handleLoserClick = (e) => {
     e.preventDefault();
+    // console.log("Top Losers clicked");
     setDisplayStocks(top_losers);
     setGainersClick(false);
   };
+  
 
   return (
     <div>
@@ -25,8 +32,8 @@ export default function Home({ top_gainers, top_losers }) {
         <button
           className={`${
             gainersClick
-              ? "text-indigo-400 bg-gray-600"
-              : "text-black bg-gray-300"
+            ?   "text-black bg-gray-300"
+            :   "text-indigo-400 bg-gray-600"
           } px-4 py-2 mx-2 rounded-lg focus:outline-none`}
           onClick={handleGainerClick}
         >
@@ -35,8 +42,8 @@ export default function Home({ top_gainers, top_losers }) {
         <button
           className={`${
             !gainersClick
-              ? "text-indigo-400 bg-gray-600"
-              : "text-black bg-gray-300"
+              ?   "text-black bg-gray-300"
+              :   "text-indigo-400 bg-gray-600"
           } px-4 py-2 mx-2 rounded-lg focus:outline-none`}
           onClick={handleLoserClick}
         >
@@ -44,12 +51,12 @@ export default function Home({ top_gainers, top_losers }) {
         </button>
       </div>
 
-      {isLoading ? (
+      {loading ? (
         <div className="text-center mt-4">
           <p>Loading...</p>
         </div>
       ) : (
-        <div className="flex">
+        <div className="pt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
           {displayStocks.map((item) => (
             <Card
               key={item.ticker}
@@ -77,9 +84,14 @@ export async function getServerSideProps(context) {
       };
     }
 
-    const data = await response.json();
-    const top_gainers = data?.top_gainers || [];
-    const top_losers = data?.top_losers || [];
+    // const data = await response.json();
+    // const top_gainers = data?.top_gainers || [];
+    // const top_losers = data?.top_losers || [];
+
+    const top_gainers = temporaryData?.top_gainers || [];
+    const top_losers = temporaryData?.top_losers || [];
+    // console.log(top_gainers)
+    // console.log(top_losers)
 
     return {
       props: {
