@@ -79,8 +79,8 @@ export async function getServerSideProps(context) {
       notFound: true,
     };
   }
-  // const stockData = await response.json();
-  const companyData=temporaryData
+  const companyData = await response.json();
+  // const companyData=temporaryData
   return {
     props: {
       companyData,
