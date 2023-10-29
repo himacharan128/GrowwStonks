@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import temporaryData from "../utils/tempTopL&GData.json";
+import { fetchAndCacheData } from "./api/cache";
 
 export default function Home({ top_gainers, top_losers }) {
   const [displayStocks, setDisplayStocks] = useState(top_gainers);
@@ -74,24 +75,12 @@ export default function Home({ top_gainers, top_losers }) {
 }
 
 export async function getServerSideProps(context) {
-  const url = `http://localhost:3000/api/topGainersLosers`;
   try {
-    const response = await fetch(url);
+    const apiKey = "58LZL65M4VXY6X7F";
+    const data = await fetchAndCacheData(apiKey);
 
-    if (!response.ok) {
-      return {
-        notFound: true,
-      };
-    }
-
-    // const data = await response.json();
-    // const top_gainers = data?.top_gainers || [];
-    // const top_losers = data?.top_losers || [];
-
-    const top_gainers = temporaryData?.top_gainers || [];
-    const top_losers = temporaryData?.top_losers || [];
-    // console.log(top_gainers)
-    // console.log(top_losers)
+    const top_gainers = data.top_gainers || [];
+    const top_losers = data.top_losers || [];
 
     return {
       props: {
@@ -100,9 +89,44 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error(error);
     return {
       notFound: true,
     };
   }
 }
+
+
+// export async function getServerSideProps(context) {
+//   const url = `http://localhost:3000/api/topGainersLosers`;
+//   try {
+//     const response = await fetch(url);
+
+//     if (!response.ok) {
+//       return {
+//         notFound: true,
+//       };
+//     }
+
+//     // const data = await response.json();
+//     // const top_gainers = data?.top_gainers || [];
+//     // const top_losers = data?.top_losers || [];
+
+//     const top_gainers = temporaryData?.top_gainers || [];
+//     const top_losers = temporaryData?.top_losers || [];
+//     // console.log(top_gainers)
+//     // console.log(top_losers)
+
+//     return {
+//       props: {
+//         top_gainers,
+//         top_losers,
+//       },
+//     };
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//     return {
+//       notFound: true,
+//     };
+//   }
+// }
