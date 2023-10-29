@@ -36,7 +36,7 @@ export default function Home({ top_gainers, top_losers }) {
             ?   "text-black bg-gray-300"
             :   "text-slate-400 bg-gray-600"
           } px-4 py-2 mx-2 rounded-lg focus:outline-none`}
-          onClick={handleGainerClick}
+          onClick={(e) => handleGainerClick(e)}
         >
           Top Gainers
         </button>
@@ -46,7 +46,7 @@ export default function Home({ top_gainers, top_losers }) {
               ?   "text-black bg-gray-300"
               :   "text-slate-400 bg-gray-600"
           } px-4 py-2 mx-2 rounded-lg focus:outline-none`}
-          onClick={handleLoserClick}
+          onClick={() => handleLoserClick(e)}
         >
           Top Losers
         </button>

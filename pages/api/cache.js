@@ -1,6 +1,10 @@
 import Redis from "ioredis";
 
-const redis = new Redis();
+const redis = new Redis({
+  host: process.env.NEXT_PUBLIC_REDIS_HOST,
+  port: process.env.NEXT_PUBLIC_REDIS_PORT,
+  password: process.env.NEXT_PUBLIC_REDIS_PASSWORD,
+});
 
 export async function fetchAndCacheData(apiKey) {
   const cachedData = await redis.get("cachedData");
