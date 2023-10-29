@@ -76,7 +76,7 @@ export default function Home({ top_gainers, top_losers }) {
 
 export async function getServerSideProps(context) {
   try {
-    const apiKey = "58LZL65M4VXY6X7F";
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
     const data = await fetchAndCacheData(apiKey);
 
     const top_gainers = data.top_gainers || [];

@@ -17,7 +17,7 @@ const Header = () => {
       </Link>
 
       {/* Search bar */}
-      <div className="w-full px-4 py-1 sm:w-3/5 flex justify-center">
+      <div className="px-4 py-1 sm:w-3/5">
         <SearchBar />
       </div>
 

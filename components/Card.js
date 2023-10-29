@@ -20,7 +20,7 @@ function Card({
   const formattedChangePercentage = change_percentage.replace("-", "");
   return (
     <Link href={`/${ticker}`}>
-      <div className="bg-slate-400 p-4 m-4 cursor-pointer rounded-md shadow-md text-center">
+      <div className="bg-gray-400 p-4 m-4 cursor-pointer rounded-md shadow-md text-center">
         <div className="flex justify-between mb-2">
           <p className="text-lg font-bold text-black">{ticker}</p>
           <p className="text-base font-semibold" style={triangleStyle}>
