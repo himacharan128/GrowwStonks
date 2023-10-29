@@ -12,7 +12,7 @@ export async function getServerSideProps(context) {
   const { params } = context;
   const { ticker } = params;
 
-  const apiKey = "6U9NA5NYY4LZ8YAS";
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
   const url = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${apiKey}`;
 

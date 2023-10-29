@@ -1,6 +1,7 @@
 import Layout from "../components/Layout/Layout";
 import ThemeProvider from "../utils/ThemeProvider";
 import "../styles/globals.css";
+// import "styles/tailwind.css"
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -10,7 +11,7 @@ function MyApp({ Component, pageProps }) {
         enableSystem={false} 
         disableTransitionOnChange
       >
-        <Layout>
+        <Layout className="bg-red-600 text-white py-4">
           <Component {...pageProps} />
         </Layout>
       </ThemeProvider>

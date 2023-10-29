@@ -8,11 +8,15 @@ const toggleMode = () => {
   setTheme(theme === 'dark' ? 'light' : 'dark');
 }
   return (
-    <button className={`bg-gray-700 text-white p-2 rounded ${
-      theme ? 'bg-indigo-400' : 'bg-orange-400'
-    }`} onClick={toggleMode}>
-      {theme === "light" ? ( 'Dark' ) : ( 'Light' )}
+    <button
+      className={`bg-gray-700 text-white p-2 rounded ${
+        theme === "light" ? "bg-orange-400" : "bg-indigo-400"
+      }`}
+      onClick={toggleMode} 
+    >
+      {theme === "light" ? "Dark" : "Light"}
     </button>
+
   );
 }
 
