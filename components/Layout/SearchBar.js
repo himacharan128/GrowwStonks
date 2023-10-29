@@ -15,7 +15,8 @@ const SearchBar = () => {
         placeholder="Search"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="border-none rounded-full w-full py-2 px-4 text-black dark:text-white font-semibold focus:outline-none focus:ring-2 focus:ring-growwOrange focus:border-transparent"
+        style={{ border: '1px solid #ccc', borderRadius: '20px', padding: '8px' }}
+        className="rounded-full w-full py-2 px-4 text-black dark:text-white font-semibold focus:outline-none focus:ring-2 focus:ring-growwOrange focus:border-transparent"
       />
       <button onClick={handleSearch} className="absolute right-3 top-1/2 transform -translate-y-1/2">
         <FiSearch size={20} color="gray" />

@@ -8,7 +8,7 @@ export default function Home({ top_gainers, top_losers }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(false); // Update loading state when data is fetched
+    setLoading(false);
   }, []);
   const handleGainerClick = (e) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ export default function Home({ top_gainers, top_losers }) {
           className={`${
             gainersClick
             ?   "text-black bg-gray-300"
-            :   "text-indigo-400 bg-gray-600"
+            :   "text-slate-400 bg-gray-600"
           } px-4 py-2 mx-2 rounded-lg focus:outline-none`}
           onClick={handleGainerClick}
         >
@@ -43,7 +43,7 @@ export default function Home({ top_gainers, top_losers }) {
           className={`${
             !gainersClick
               ?   "text-black bg-gray-300"
-              :   "text-indigo-400 bg-gray-600"
+              :   "text-slate-400 bg-gray-600"
           } px-4 py-2 mx-2 rounded-lg focus:outline-none`}
           onClick={handleLoserClick}
         >

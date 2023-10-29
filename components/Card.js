@@ -9,7 +9,9 @@ function Card({
 }) {
   const isPositiveChange = parseFloat(change_amount) > 0;
   const isNegativeChange = parseFloat(change_amount) < 0;
-
+  const hrStyle = {
+    border: "1px solid black", // Set the border color to black
+  };
   const triangleStyle = {
     color: isPositiveChange ? "green" : isNegativeChange ? "red" : "black",
   };
@@ -17,16 +19,15 @@ function Card({
   const triangleSymbol = isPositiveChange ? "▲" : isNegativeChange ? "▼" : "";
   const formattedChangePercentage = change_percentage.replace("-", "");
   return (
-    <Link href={`/stock/${ticker}`}>
+    <Link href={`/${ticker}`}>
       <div className="bg-slate-400 p-4 m-4 cursor-pointer rounded-md shadow-md text-center">
-        {/* 1st Row */}
         <div className="flex justify-between mb-2">
           <p className="text-lg font-bold text-black">{ticker}</p>
           <p className="text-base font-semibold" style={triangleStyle}>
             {triangleSymbol} {formattedChangePercentage}
           </p>
         </div>
-        <hr className="mb-2" />
+        <hr className="mb-2" style={hrStyle} />
 
         <div className="mb-2 text-sm">
           <p>Price: ${price}</p>
@@ -37,5 +38,4 @@ function Card({
     </Link>
   );
 }
-
 export default Card;

@@ -13,19 +13,14 @@ export async function getServerSideProps(context) {
   const { ticker } = params;
 
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-
   const url = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${apiKey}`;
-
   const response = await fetch(url);
-
   if (!response.ok) {
     return {
       notFound: true,
     };
   }
-
   const stockData = await response.json();
-
   return {
     props: {
       stockData,
