@@ -9,9 +9,10 @@ export default function Home({ top_gainers, top_losers }) {
   const [gainersClick, setGainersClick] = useState(true);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoading(false);
-  }, []);
+  // useEffect(() => {
+  //   setLoading(false);
+  // }, []);
+
   const handleGainerClick = (e) => {
     e.preventDefault();
     // console.log("Top Gainers clicked");
@@ -52,7 +53,7 @@ export default function Home({ top_gainers, top_losers }) {
         </button>
       </div>
 
-      {loading ? (
+      {!loading ? (
         <div className="text-center mt-4">
           <p>Loading...</p>
         </div>
@@ -86,6 +87,7 @@ export async function getServerSideProps(context) {
 
     const top_gainers = data.top_gainers || [];
     const top_losers = data.top_losers || [];
+
 
     return {
       props: {
