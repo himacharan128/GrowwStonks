@@ -2,16 +2,27 @@
 
 
 # GrowwStonks - Stocks Explorer Web App
-[document.pdf](https://github.com/himacharan128/GrowwStonks/files/13200775/document.pdf)
 ## Overview
 
 GrowwStonks is a web application built with Next.js that allows users to explore and view information on stocks and ETFs. The app has two main pages:
 
 - Explore Page - Shows top gainers and losers using data from Alpha Vantage API.
 - Stock/ETF Details Page - Displays overview and price chart for a specific stock or ETF.
-![Screenshot 2023-10-30 at 4 55 56 AM](https://github.com/himacharan128/GrowwStonks/assets/82611545/b6486957-cca1-45ad-84ce-88b1777e7d8d)
-![Screenshot 2023-10-30 at 04-56-18 Screenshot](https://github.com/himacharan128/GrowwStonks/assets/82611545/f47c5794-5b4a-4e4d-942b-58db68b21174)
-![Screenshot 2023-10-30 at 4 57 00 AM](https://github.com/himacharan128/GrowwStonks/assets/82611545/f830c54a-2eea-43d3-8c80-ac97a57dbb22)![Screenshot 2023-10-30 at 4 57 21 AM](https://github.com/himacharan128/GrowwStonks/assets/82611545/f4dfcdf4-8b11-423e-9123-a9c1029d6edb)![Screenshot 2023-10-30 at 4 58 17 AM](https://github.com/himacharan128/GrowwStonks/assets/82611545/a0978256-72bd-4590-bd3a-36d23349a8ec)
+  
+## Looks like..
+<table>
+  <tr>
+    <td><img src="https://github.com/himacharan128/GrowwStonks/assets/82611545/b6486957-cca1-45ad-84ce-88b1777e7d8d" alt="Screenshot 1"></td>
+    <td><img src="https://github.com/himacharan128/GrowwStonks/assets/82611545/f47c5794-5b4a-4e4d-942b-58db68b21174" alt="Screenshot 2"></td>
+    <td><img src="https://github.com/himacharan128/GrowwStonks/assets/82611545/f830c54a-2eea-43d3-8c80-ac97a57dbb22" alt="Screenshot 3"></td>
+    <td><img src="https://github.com/himacharan128/GrowwStonks/assets/82611545/f4dfcdf4-8b11-423e-9123-a9c1029d6edb" alt="Screenshot 4"></td>
+    <td><img src="https://github.com/himacharan128/GrowwStonks/assets/82611545/a0978256-72bd-4590-bd3a-36d23349a8ec" alt="Screenshot 5"></td>
+  </tr>
+</table>
+
+This code will create a table with five cells, each containing one of your screenshots. You can adjust the layout, size, and spacing of the images by modifying the HTML and applying CSS styles as needed. Make sure to replace the image URLs with the actual URLs of your screenshots.
+
+
 ## Key Features
 
 - Search stocks/ETFs with autocomplete suggestions.
@@ -32,6 +43,15 @@ Stock data is fetched from the Alpha Vantage API, and a free API key is required
 
 API responses are cached to optimize requests.
 
+## Dependencies
+
+- Next.js: The core framework used for building the web application.
+- ioredis: A Redis client library for caching API responses.
+- React and React-DOM: Fundamental libraries for building the UI.
+- react-google-charts: A library for displaying line graphs.
+- tailwindcss: A utility-first CSS framework for styling.
+- Other dependencies for linting, theming, and handling next server-side rendering.
+  
 ## Pages
 
 ### Explore Page
@@ -78,12 +98,6 @@ Initial page data is prefetched at build time in getStaticProps/getServerSidePro
 - Lazy loading components/data.
 - Server-side rendering where possible.
 
-## Testing
-
-- Unit tests for individual components/functions.
-- Integration tests for key pages.
-- Manual testing across devices/browsers.
-
 ## Installation and Local Development
 
 To install and run the project locally, follow these steps:
@@ -93,18 +107,20 @@ To install and run the project locally, follow these steps:
    git clone https://github.com/himacharan128/GrowwStonks.git
    
 2. Navigate to the project directory:
-cd GrowwStonks
-3. Install the dependencies:
-пр install
-4. Obtain your Alpha Vantage API key and set it in the project. You can do this by creating
-a. env. local file in the root of your project and adding your API key like this:
-ALPHA_VANTAGE_API_KEY=your-api-key-here
-5. Start the development server:
+   ```bash
+   cd GrowwStonks
+4. Install the dependencies:
+   ```bash
+   прm install
+6. Obtain your Alpha Vantage API key and set it in the project. You can do this by creating a env.local file in the root of your project and adding your API key like this:
+   ```bash
+   ALPHA_VANTAGE_API_KEY=your-api-key-here
+7. Start the development server:
 npm run dev
-6. Open your web browser and access the app at http://localhost:3000.
-Deployment
+8. Open your web browser and access the app at http://localhost:3000.
+## Deployment
 The app is deployed on Vercel and is hosted at https://groww-stonks-gamma.vercel.app/. The source code is available on GitHub at https:// github.com/himacharan128/GrowwStonks.
    
-   
+### Additional documentation [document.pdf](https://github.com/himacharan128/GrowwStonks/files/13200775/document.pdf)
    
    
