@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 function Card({
   ticker,
@@ -16,10 +17,12 @@ function Card({
     color: isPositiveChange ? "green" : isNegativeChange ? "red" : "black",
   };
 
+  const router = useRouter()
+
   const triangleSymbol = isPositiveChange ? "▲" : isNegativeChange ? "▼" : "";
   const formattedChangePercentage = change_percentage.replace("-", "");
   return (
-    <Link href={`/${ticker}`}>
+    <div onClick={() => router.push(`/${ticker}`)}>
       <div className="bg-gray-400 p-4 m-4 cursor-pointer rounded-md shadow-md text-center">
         <div className="flex justify-between mb-2">
           <p className="text-lg font-bold text-black">{ticker}</p>
@@ -35,7 +38,7 @@ function Card({
           <p>Change Amount: ${change_amount}</p>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 export default Card;
