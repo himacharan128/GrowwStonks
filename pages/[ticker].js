@@ -1,9 +1,37 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import chartData from "../utils/tempChartData.json";
 import { Chart } from "react-google-charts";
 
-function Company({ companyData }) {
+function Company() {
+  const [companyData, setCompanyData] = useState([]);
+
+  const router = useRouter();
+  const { ticker } = router.query;
+
+  useEffect(() => {
+    // Fetch data on the client side here
+    async function fetchData() {
+      try {
+        const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+        const url = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${apiKey}`;
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data for ${ticker}`);
+        }
+
+        const data = await response.json();
+        setCompanyData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData(); // Call the function to fetch data when the component mounts
+  }, [ticker]);
+
+
   const weeklyData = chartData["Weekly Adjusted Time Series"];
   const chartDetails = Object.entries(weeklyData).map(([date, data]) => {
     return [
@@ -28,6 +56,12 @@ function Company({ companyData }) {
   };
 
   return (
+    <>
+    {
+      companyData.length == 0 ?
+      <h1>Loading...</h1>
+      :
+
     <div className="bg-white shadow-lg rounded-lg max-w-3xl mx-auto p-4">
       <div className="flex space-x-2 mb-4 items-center justify-between">
         <h1 className="text-3xl font-bold mb-2 text-black">{companyData.Name}</h1>
@@ -137,40 +171,42 @@ function Company({ companyData }) {
         </div>
       </div>
     </div>
+    }
+    </>
   );
 }
 
 export default Company;
 
 
-export async function getServerSideProps(context) {
-  const { params } = context;
-  const { ticker } = params;
+// export async function getServerSideProps(context) {
+//   const { params } = context;
+//   const { ticker } = params;
 
-  try {
-    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-    const url = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${apiKey}`;
-    const response = await fetch(url);
+//   try {
+//     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+//     const url = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${apiKey}`;
+//     const response = await fetch(url);
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch data for ${ticker}`);
-    }
+//     if (!response.ok) {
+//       throw new Error(`Failed to fetch data for ${ticker}`);
+//     }
 
-    const companyData = await response.json();
+//     const companyData = await response.json();
 
-    return {
-      props: {
-        companyData,
-      },
-    };
-  } catch (error) {
-    console.error(error);
+//     return {
+//       props: {
+//         companyData,
+//       },
+//     };
+//   } catch (error) {
+//     console.error(error);
 
-    return {
-      notFound: true,
-    };
-  }
-}
+//     return {
+//       notFound: true,
+//     };
+//   }
+// }
 
 
 // export async function getServerSideProps(context) {
