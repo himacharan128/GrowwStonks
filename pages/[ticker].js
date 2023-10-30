@@ -143,23 +143,52 @@ function Company({ companyData }) {
 export default Company;
 
 
-
 export async function getServerSideProps(context) {
   const { params } = context;
   const { ticker } = params;
 
-  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-  const url = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${apiKey}`;
-  const response = await fetch(url);
-  if (!response.ok) {
+  try {
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    const url = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${apiKey}`;
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data for ${ticker}`);
+    }
+
+    const companyData = await response.json();
+
+    return {
+      props: {
+        companyData,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+
     return {
       notFound: true,
     };
   }
-  const companyData = await response.json();
-  return {
-    props: {
-      companyData,
-    },
-  };
 }
+
+
+// export async function getServerSideProps(context) {
+//   const { params } = context;
+//   const { ticker } = params;
+
+//   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+//   const url = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${apiKey}`;
+//   const response = await fetch(url);
+//   if (!response.ok) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+//   const companyData = await response.json();
+//   return {
+//     props: {
+//       companyData,
+//     },
+//   };
+// }
