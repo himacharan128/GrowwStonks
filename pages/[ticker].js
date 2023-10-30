@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import React from "react";
-import temporaryData from "../utils/tempCompanyOverview.json";
 import chartData from "../utils/tempChartData.json";
 import { Chart } from "react-google-charts";
 
@@ -158,7 +157,6 @@ export async function getServerSideProps(context) {
     };
   }
   const companyData = await response.json();
-  // const companyData=temporaryData
   return {
     props: {
       companyData,

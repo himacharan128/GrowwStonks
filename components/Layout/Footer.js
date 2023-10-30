@@ -16,11 +16,11 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className="text-xs text-right m-4">
+      {/* <div className="text-xs text-right m-4">
         <Link href="http://localhost:3000/api/topGainersLosers">
           <p className=" text-blue-300 text-xs text-right">Click Me if Page is not working Properly!</p>
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 };
