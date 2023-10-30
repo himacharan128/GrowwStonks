@@ -91,3 +91,20 @@ To install and run the project locally, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/himacharan128/GrowwStonks.git
+   
+2. Navigate to the project directory:
+cd GrowwStonks
+3. Install the dependencies:
+пр install
+4. Obtain your Alpha Vantage API key and set it in the project. You can do this by creating
+a. env. local file in the root of your project and adding your API key like this:
+ALPHA_VANTAGE_API_KEY=your-api-key-here
+5. Start the development server:
+npm run dev
+6. Open your web browser and access the app at http://localhost:3000.
+Deployment
+The app is deployed on Vercel and is hosted at https://groww-stonks-gamma.vercel.app/. The source code is available on GitHub at https:// github.com/himacharan128/GrowwStonks.
+   
+   
+   
+   
